@@ -4,6 +4,7 @@ let e_temp_max = document.querySelector(".weather-temp-max");*/
 let e_location = document.querySelector(".weather-location h2 a");
 let icon_weather = document.querySelector(".weather-icon img");
 let current_time = new Date();
+console.log(current_time.getHours());
 let body = document.querySelector("body");
 let main = document.querySelector("main");
 
@@ -13,11 +14,12 @@ window.addEventListener("load", () => {
     main.style.backgroundColor = "var(--background-main-day)";
     main.style.boxShadow = "12px 12px 0px var(--shadow-main-day)";
     e_location.classList.add("weather-location-day");
+  } else {
+    body.style.backgroundColor = "var(--background-body-night)";
+    main.style.backgroundColor = "var(--background-main-night)";
+    main.style.boxShadow = "12px 12px 0px var(--shadow-main-night)";
+    e_location.classList.add("weather-location-night");
   }
-  body.style.backgroundColor = "var(--background-body-night)";
-  main.style.backgroundColor = "var(--background-main-night)";
-  main.style.boxShadow = "12px 12px 0px var(--shadow-main-night)";
-  e_location.classList.add("weather-location-night");
   let lon, lat;
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((p) => {
@@ -44,14 +46,16 @@ window.addEventListener("load", () => {
             case "Clear":
               if (current_time.getHours() < 21) {
                 icon_weather.src = "images/animated/day.svg";
+              } else {
+                icon_weather.src = "images/animated/night.svg";
               }
-              icon_weather.src = "images/animated/night.svg";
               break;
             case "Clouds":
               if (current_time.getHours() < 21) {
                 icon_weather.src = "images/animated/cloudy-day-3.svg";
+              } else {
+                icon_weather.src = "images/animated/cloudy-night-3.svg";
               }
-              icon_weather.src = "images/animated/cloudy-night-3.svg";
               break;
             case "Atmosphere":
               icon_weather.src = "images/animated/cloudy.svg";
@@ -59,20 +63,23 @@ window.addEventListener("load", () => {
             case "Snow":
               if (current_time.getHours() < 21) {
                 icon_weather.src = "images/animated/snowy-3.svg";
+              } else {
+                icon_weather.src = "images/animated/snowy-5.svg";
               }
-              icon_weather.src = "images/animated/snowy-5.svg";
               break;
             case "Rain":
               if (current_time.getHours() < 21) {
                 icon_weather.src = "images/animated/rainy-3.svg";
+              } else {
+                icon_weather.src = "images/animated/rainy-5.svg";
               }
-              icon_weather.src = "images/animated/rainy-5.svg";
               break;
             case "Drizzle":
               if (current_time.getHours() < 21) {
                 icon_weather.src = "images/animated/rainy-2.svg";
+              } else {
+                icon_weather.src = "images/animated/rainy-4.svg";
               }
-              icon_weather.src = "images/animated/rainy-4.svg";
               break;
             case "Thunderstorm":
               icon_weather.src = "images/animated/thunder.svg";
