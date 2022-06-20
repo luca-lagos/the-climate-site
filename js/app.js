@@ -3,13 +3,13 @@ let e_temp = document.querySelector(".weather-temp h2");
 let e_temp_max = document.querySelector(".weather-temp-max");*/
 let e_location = document.querySelector(".weather-location h2 a");
 let icon_weather = document.querySelector(".weather-icon img");
-let current_time = new Date();
-console.log(current_time.getHours());
+let time = new Date();
+let current_time = time.getHours();
 let body = document.querySelector("body");
 let main = document.querySelector("main");
 
 window.addEventListener("load", () => {
-  if (current_time.getHours() < 21) {
+  if (current_time < 21 && current_time > 6) {
     body.style.backgroundColor = "var(--background-body-day)";
     main.style.backgroundColor = "var(--background-main-day)";
     main.style.boxShadow = "12px 12px 0px var(--shadow-main-day)";
@@ -44,14 +44,14 @@ window.addEventListener("load", () => {
           e_location.href = `https://www.google.com.ar/maps/@${lat},${lon}`;
           switch (data.weather[0].main) {
             case "Clear":
-              if (current_time.getHours() < 21) {
+              if (current_time < 21 && current_time > 6) {
                 icon_weather.src = "images/animated/day.svg";
               } else {
                 icon_weather.src = "images/animated/night.svg";
               }
               break;
             case "Clouds":
-              if (current_time.getHours() < 21) {
+              if (current_time < 21 && current_time > 6) {
                 icon_weather.src = "images/animated/cloudy-day-3.svg";
               } else {
                 icon_weather.src = "images/animated/cloudy-night-3.svg";
@@ -61,21 +61,21 @@ window.addEventListener("load", () => {
               icon_weather.src = "images/animated/cloudy.svg";
               break;
             case "Snow":
-              if (current_time.getHours() < 21) {
+              if (current_time < 21 && current_time > 6) {
                 icon_weather.src = "images/animated/snowy-3.svg";
               } else {
                 icon_weather.src = "images/animated/snowy-5.svg";
               }
               break;
             case "Rain":
-              if (current_time.getHours() < 21) {
+              if (current_time < 21 && current_time > 6) {
                 icon_weather.src = "images/animated/rainy-3.svg";
               } else {
                 icon_weather.src = "images/animated/rainy-5.svg";
               }
               break;
             case "Drizzle":
-              if (current_time.getHours() < 21) {
+              if (current_time < 21 && current_time > 6) {
                 icon_weather.src = "images/animated/rainy-2.svg";
               } else {
                 icon_weather.src = "images/animated/rainy-4.svg";
